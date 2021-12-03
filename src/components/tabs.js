@@ -34,7 +34,13 @@ const tabsAppender = (selector) => {
 
   axios.get('http://localhost:5000/api/topics')
   .then(resp => {
-    console.log(resp.data.topics);
+    console.log('TABS RESPONSE-----------------------------');
+    console.log(resp);
+    console.log('-------------------------------------');
+
+    const tabsCard = Tabs(resp.data.topics);
+    const entryPoint = document.querySelector(selector);
+    entryPoint.appendChild(tabsCard);
   })
   .catch(error => {
     console.error(error);
