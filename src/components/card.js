@@ -56,19 +56,16 @@ return card;
 // Card(idk);
 const cardAppender = (selector) => {
 
+  const entryPoint = document.querySelector(selector);
   axios.get('http://localhost:5000/api/articles')
   .then(resp => {
-    console.log('-------------------------------');
-    console.log(resp);
-    console.log('-------------------------------');
-    const entryPoint = document.querySelector(selector);
-    console.log(resp.data.articles);
-    // resp.data.articles.forEach(element => {
-    //   // delete element.id;
-    //   const cardEntry = Card(element);
-    //   entryPoint.appendChild(cardEntry);
-    // });
 
+    Object.values(resp.data.articles).forEach(val => {
+      val.forEach(item =>{
+        const newCard = Card(item);
+        entryPoint.appendChild(newCard);
+      })
+    });
   })
   .catch(error => {
     console.error(error);

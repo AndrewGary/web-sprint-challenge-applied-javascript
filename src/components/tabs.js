@@ -35,7 +35,7 @@ const tabsAppender = (selector) => {
   axios.get('http://localhost:5000/api/topics')
   .then(resp => {
     console.log('TABS RESPONSE-----------------------------');
-    console.log(resp);
+    console.log(resp.data);
     console.log('-------------------------------------');
 
     const tabsCard = Tabs(resp.data.topics);
